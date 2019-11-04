@@ -33,7 +33,8 @@ for key, value in objects.items():
     thing = Object(key, value)
     bag.is_fit(thing)
     packet.is_fit(thing)
-
+egg = Object('egg', 1)
+bag.is_fit(egg)
 s = ' '.join(item for item in bag.storage)
 print(f'{s} is in bag. Free space is {bag.capacity}')
 
