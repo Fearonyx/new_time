@@ -45,7 +45,8 @@ def perform_move(field, key):
 
     field[current_position], field[current_position + delta] = \
         field[current_position + delta], field[current_position]
-    
+
+    return field
 
 
 def handle_user_input():
@@ -62,14 +63,14 @@ def main():
     while not is_game_finished(field):
         try:
             print_field(field)
-            move =handle_user_input()
+            move = handle_user_input()
             field = perform_move(field, move)
         except IndexError as e:
             print(e)
 
     print('Game is finished')
 
-    
+
 if __name__ == '__main__':
 
     main()

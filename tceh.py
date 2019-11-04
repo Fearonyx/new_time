@@ -1,58 +1,30 @@
-def my_function():
-    print("i'm function")
+# Угадай число
+import random
 
 
-print(my_function)
-print('Functions are objects', isinstance(my_function, object))
-
-test = my_function
-test()
-
-my_list = [my_function]
-print(my_list)
+# Компьютер загадывает число в пределах от 1 до 100 включительно
+def what_number():
+    return random.randrange(1, 101)
 
 
-def call_passed_function(incoming):
-    print('Calling!')
-    incoming()
-    print('Called!')
+def user_inp():
+    user_input = int(input('Input your number: '))
+    return user_input
 
 
-call_passed_function(my_function)
+def game():
+    comp_number = what_number()
+    user_number = user_inp()
+    while user_number != comp_number:
+        if user_number > comp_number:
+            print('Nope. Lower.')
+        elif user_number < comp_number:
+            print('Greater')
+        user_number = user_inp()
+    print('You are win!!!')
+    print("Let's play again")
+
+    game()
 
 
-try:
-    d = 2
-    d()
-except TypeError as e:
-    print('It is not a fuction', e)
-
-
-print(callable(len), callable(45), callable(callable))
-
-
-def return_min_function():
-    return min
-
-
-test = return_min_function()
-min_value = test(4, 5, -9, 12)
-print('Min values is', min_value)
-
-
-def double_all_elements(lst):
-    """ Double all elements in list
-    :param lst: incoming list
-    :return: result list
-    """
-
-    if len(lst) == 0:
-        return []
-    else:
-        updated_element = lst[0] * 2
-        print(updated_element, len(lst))
-        result = [updated_element, ] + double_all_elements(lst[1:])
-    return result
-
-
-double_all_elements([1, 2, 34, 44, 7])
+game()
